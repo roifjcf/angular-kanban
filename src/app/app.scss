@@ -1,0 +1,27 @@
+.col {
+  width: 100%;
+  padding: 16px;
+  
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  gap: 8px;
+}
+
+.kanban-container {
+  width: 100%;
+
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+}
+
+.tasks-container {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  gap: 4px;
+}

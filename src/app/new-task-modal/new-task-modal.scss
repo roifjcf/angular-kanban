@@ -1,0 +1,15 @@
+.new-task-modal-container {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  
+  border-radius: 4px;
+  background-color: var(--surface);
+}
+
+.new-task-modal-buttons {
+  margin-top: 16px;
+  display: flex;
+  flex-direction: row;
+  gap: 4px;
+}

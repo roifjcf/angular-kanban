@@ -1,0 +1,28 @@
+<div class="display-center new-task-modal-container soft-shadow">
+  <label for="taskTitle">
+    <p>Title</p>
+    <input
+      id="taskTitle"
+      type="text"
+      [(ngModel)]="newTaskTitle"
+    />
+  </label>
+
+  <label for="taskDescription">
+    <p>Description</p>
+    <input
+      id="taskDescription"
+      type="text"
+      [(ngModel)]="newTaskDescription"
+    />
+  </label>
+
+
+  <div class="new-task-modal-buttons">
+    <button (click)="cancel()">Cancel</button>
+    <button (click)="confirm()">Confirm</button>
+  </div>
+</div>
+
+
+<div class="bluroverlay"></div>

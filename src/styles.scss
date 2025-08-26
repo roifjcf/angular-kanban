@@ -1,1 +1,117 @@
 /* You can add global styles to this file, and also import other style files */
+
+/* Themes */
+
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+
+:root {
+  --surface: #fff;
+  --on-surface: #000;
+  --on-surface-variant: #bfbfbf;
+};
+
+[date-theme="dark"] {
+  --surface: #000;
+  --on-surface: #fff;
+  --on-surface-variant: #bfbfbf;
+}
+
+
+
+/* Base */
+
+html, body {
+  width: 100%;
+  height: 100%;
+
+  font-family: "Noto Sans", sans-serif;
+  color: var(--on-surface);
+  background-color: var(--surface);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+nav {
+  width: 100%;
+  padding: 16px;
+
+  color: var(--surface);
+  background-color: var(--on-surface);
+}
+
+main {
+  width: 100%;
+  height: 100%;
+  margin-top: 64px;
+  padding: 16px;
+  
+}
+
+button {
+  border: solid 1px var(--on-surface);
+  padding: 8px;
+  border-radius: 4px;
+
+  color: var(--on-surface);
+  background-color: var(--surface);
+
+  &:hover {
+    cursor: pointer;
+    color: var(--surface);
+    background-color: var(--on-surface);
+  }
+}
+
+hr {
+  padding: 0 16px;
+  margin: 8px 0;
+
+  border: none; /* Removes the default border */
+  height: 2px; /* Sets the thickness of the line */
+  background-color: var(--on-surface-variant); /* Sets the color of the line */
+}
+
+.border {
+  border: solid 1px var(--on-surface);
+}
+
+.border-left {
+  border-left: solid 1px var(--on-surface-variant);
+}
+
+.border-right {
+  border-right: solid 1px var(--on-surface-variant);
+}
+
+.display-center {
+  position: fixed;
+  top: 50%;
+  right: 50%;
+  transform: translate(50%,-50%);
+  z-index: 700;
+}
+
+.bluroverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  backdrop-filter: blur(4px);
+  z-index: 300;
+}
+
+.soft-shadow {
+  filter: drop-shadow(0 0 8px #00000010);
+}
