@@ -1,0 +1,61 @@
+<div
+  class="display-center task-modal-container soft-shadow"
+>
+
+
+  <!-- title -->
+  <label for="taskTitle">
+    <p>Title</p>
+    @if (mode() === "new") {
+      <input
+        id="taskTitle"
+        type="text"
+        [(ngModel)]="newTaskTitle"
+      />
+    } @else if (mode() === "edit") {
+      <input
+        id="taskTitle"
+        type="text"
+        [(ngModel)]="currTaskTitle"
+      />
+    }
+  </label>
+
+  <!-- description -->
+  <label for="taskDescription">
+    <p>Description</p>
+    @if (mode() === "new") {
+      <input
+        id="taskDescription"
+        type="text"
+        [(ngModel)]="newTaskDescription"
+      />
+    } @else if (mode() === "edit") {
+      <input
+        id="taskDescription"
+        type="text"
+        [(ngModel)]="currTaskDescription"
+      />
+    }
+  </label>
+
+
+
+  <!-- buttons -->
+  <div class="task-modal-buttons">
+    @if (mode() === "new") {
+      <button (click)="cancel()">Cancel</button>
+      <button (click)="confirm()">Confirm</button>
+    } @else if (mode() === "edit") {
+      <button (click)="delete()">Delete</button>
+      <button (click)="cancel()">Cancel</button>
+      <button (click)="save()">Save</button>
+    }
+  </div>
+
+
+  
+</div>
+
+
+<div class="bluroverlay"></div>

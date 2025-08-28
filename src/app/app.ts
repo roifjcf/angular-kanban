@@ -8,11 +8,11 @@ import {
   transferArrayItem,
 } from '@angular/cdk/drag-drop'
 
-import { TaskInterface } from '../type';
+import { TaskInterface, TaskModalType } from '../type';
 import { NewTaskInterface } from '../type';
 
 import { Task } from "./task/task";
-import { NewTaskModal } from './new-task-modal/new-task-modal';
+import { TaskModal } from './task-modal/task-modal';
 
 
 @Component({
@@ -22,17 +22,18 @@ import { NewTaskModal } from './new-task-modal/new-task-modal';
     Task,
     CdkDropList,
     CdkDrag,
-    NewTaskModal
+    TaskModal
   ],
   templateUrl: './app.html',
   styleUrl: './app.scss',
   standalone: true,
 })
 export class App {
+
+  /** General */
   protected readonly title = signal('angular-kanban');
-  isModalOpen = false;
 
-
+  /** Tasks */
   todo: TaskInterface[] = [
     {
       id: 1,
@@ -64,20 +65,16 @@ export class App {
 
 
 
-  editTask(list: string, task: TaskInterface): void {}
 
-  drop(event: CdkDragDrop<TaskInterface[]>) {
-    // runs when the drop event finished
-    if (event.previousContainer === event.container) {
-      moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
-    } else {
-      transferArrayItem(
-        event.previousContainer.data,
-        event.container.data,
-        event.previousIndex,
-        event.currentIndex,
-      );
-    }
+
+  /** Modal control */
+  isModalOpen = false;
+  mode: TaskModalType = "new";
+  taskToEdit: TaskInterface | undefined;
+
+  handleNewTaskButtonClick() {
+    this.mode = "new";
+    this.isModalOpen = true;
   }
 
   closeModal() {
@@ -100,5 +97,46 @@ export class App {
     })
     alert("Added a new task to the todo list!");
   }
+
+  updateTask(updatedTask: TaskInterface) {
+    this.todo = this.todo.map(task =>
+      task.id === updatedTask.id ? updatedTask : task
+    );
+    this.inProgress = this.inProgress.map(task =>
+      task.id === updatedTask.id ? updatedTask : task
+    );
+    this.done = this.done.map(task =>
+      task.id === updatedTask.id ? updatedTask : task
+    );
+  }
+
+  deleteTask(taskToDelete: TaskInterface) {
+    this.todo = this.todo.filter(task => task.id !== taskToDelete.id);
+    this.inProgress = this.inProgress.filter(task => task.id !== taskToDelete.id);
+    this.done = this.done.filter(task => task.id !== taskToDelete.id);
+  }
+
+
+
+
+
+  /** Drag and drop */
+  drop(event: CdkDragDrop<TaskInterface[]>) {
+    // runs when the drop event finished
+    if (event.previousContainer === event.container) {
+      moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
+    } else {
+      transferArrayItem(
+        event.previousContainer.data,
+        event.container.data,
+        event.previousIndex,
+        event.currentIndex,
+      );
+    }
+  }
+
+
+
+
 
 }

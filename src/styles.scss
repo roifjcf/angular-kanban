@@ -115,3 +115,16 @@ hr {
 .soft-shadow {
   filter: drop-shadow(0 0 8px #00000010);
 }
+
+
+
+
+/* From angular CDK */
+
+.cdk-drag-animating {
+  transition: transform 250ms;
+}
+
+.cdk-drag-placeholder {
+  opacity: 0;
+}

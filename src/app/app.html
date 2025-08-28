@@ -17,7 +17,7 @@
 
 <main>
 
-  <button (click)="isModalOpen=true">+ New Task</button>
+  <button (click)="handleNewTaskButtonClick()">+ New Task</button>
   <hr>
   <div class="kanban-container">
 
@@ -32,7 +32,13 @@
         class="tasks-container"
       >
         @for (task of todo; track task.id) {
-          <app-task [task]="task" cdkDrag />
+          <app-task
+            [task]="task"
+            (editModalTypeEvent)="mode='edit'"
+            (setOpenModalEvent)="isModalOpen=true"
+            (setTaskToEditEvent)="taskToEdit=task"
+            cdkDrag
+          />
         }
       </div>
     </div>
@@ -48,7 +54,13 @@
         class="tasks-container"
       >
         @for (task of inProgress; track task.id) {
-          <app-task [task]="task" cdkDrag />
+          <app-task
+            [task]="task"
+            (editModalTypeEvent)="mode='edit'"
+            (setOpenModalEvent)="isModalOpen=true"
+            (setTaskToEditEvent)="taskToEdit=task"
+            cdkDrag
+          />
         }
       </div>
     </div>
@@ -64,18 +76,29 @@
         class="tasks-container"
       >
         @for (task of done; track task.id) {
-          <app-task [task]="task" cdkDrag />
+          <app-task
+            [task]="task"
+            (editModalTypeEvent)="mode='edit'"
+            (setOpenModalEvent)="isModalOpen=true"
+            (setTaskToEditEvent)="taskToEdit=task"
+            cdkDrag
+          />
         }
       </div>
     </div>
+    
   </div>
 
 
   <!-- fixed position stuff -->
   @if (isModalOpen) {
-    <app-new-task-modal
+    <app-task-modal
       (closeModalEvent)="closeModal()"
       (addTaskEvent)="addNewTask($event)"
+      (modifyTaskEvent)="updateTask($event)"
+      (deleteTaskEvent)="deleteTask($event)"
+      [mode]="mode"
+      [taskToEdit]="taskToEdit"
     />
   }
 
