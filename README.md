@@ -2,14 +2,14 @@
 
 🔥A kanban app built with angular and firebase.
 
-Angular version: `20.2.0`
-
-Main reference:
+Reference(s):
 
 - https://developers.google.com/codelabs/building-a-web-app-with-angular-and-firebase
 - https://angular.dev/overview
 - https://angular.dev/guide/drag-drop
 - https://angular.dev/guide/forms
+- https://github.com/angular/angularfire/blob/main/docs/install-and-setup.md
+- https://firebase.google.com/docs/firestore
 
 ## Run the project locally
 

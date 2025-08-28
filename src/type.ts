@@ -1,5 +1,5 @@
 export interface TaskInterface {
-  id: number;
+  id?: string; // Firestore document id
   title: string;
   description: string;
 }

@@ -7,13 +7,12 @@
 <!-- * * * * * * * to get started with your project! * * * * * * * -->
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
 
-<header>
-  
-  <nav>
-    🔥 Angular kanban
-  </nav>
 
+<header>
+  <nav> 🔥 Angular kanban </nav>
 </header>
+
+
 
 <main>
 
@@ -26,12 +25,12 @@
       <div
         cdkDropList
         #todoList="cdkDropList"
-        [cdkDropListData]="todo"
+        [cdkDropListData]="todo()"
         [cdkDropListConnectedTo]="[inProgressList, doneList]"
         (cdkDropListDropped)="drop($event)"
         class="tasks-container"
       >
-        @for (task of todo; track task.id) {
+        @for (task of todo(); track task) {
           <app-task
             [task]="task"
             (editModalTypeEvent)="mode='edit'"
@@ -48,12 +47,12 @@
       <div
         cdkDropList
         #inProgressList="cdkDropList"
-        [cdkDropListData]="inProgress"
+        [cdkDropListData]="inProgress()"
         [cdkDropListConnectedTo]="[todoList, doneList]"
         (cdkDropListDropped)="drop($event)"
         class="tasks-container"
       >
-        @for (task of inProgress; track task.id) {
+        @for (task of inProgress(); track task) {
           <app-task
             [task]="task"
             (editModalTypeEvent)="mode='edit'"
@@ -70,12 +69,12 @@
       <div
         cdkDropList
         #doneList="cdkDropList"
-        [cdkDropListData]="done"
+        [cdkDropListData]="done()"
         [cdkDropListConnectedTo]="[inProgressList, doneList]"
         (cdkDropListDropped)="drop($event)"
         class="tasks-container"
       >
-        @for (task of done; track task.id) {
+        @for (task of done(); track task) {
           <app-task
             [task]="task"
             (editModalTypeEvent)="mode='edit'"
